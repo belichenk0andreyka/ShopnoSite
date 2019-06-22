@@ -178,7 +178,7 @@
               <div class="subject_area"><input type="text"placeholder="Subject"></div>
               <div class="email_area"><input type="text"placeholder="E-Mail"></div>
               <div class="message_area"><textarea placeholder="Message"></textarea></div>
-              <div><button>Send Message</button></div>
+              <div><button class="connection_button">Send Message</button></div>
             </div>
             <div class="contactsAndMap">
                 <div class="contacts">
@@ -189,10 +189,25 @@
                   <p class="contacts5">Web: www.designagency.net</p>
                   <p>E-mail: info@designagency.net</p>
                 </div>
-                <div id="map"></div>
-
+                <div id="map">
+                  <google-map />
+                </div>
+            
             </div>
-          </div>
+            </div>
+            <footer class="footer">
+              <div class="follow">
+                <p>Follow us</p>
+              </div>
+              <div class="socsety">
+                <img src="src/assets/twitter.png"class="twitter">
+                <img src="src/assets/facebook.png"class="facebook">
+                <img src="src/assets/ball.png"class="ball">
+              </div>
+              <div class="copyright">
+                <p>Copyright Masum Parvej. All Rights Reversed</p>
+              </div>
+            </footer>
         </div>
       </div>
     </template>
@@ -202,6 +217,7 @@
       import SecondPerson from './components/secondPerson.vue'
       import ThirdPerson from './components/thirdPerson.vue'
       import FourthPerson from './components/fourthPerson.vue'
+      import GoogleMap from "./components/GoogleMap.vue"
 
     export default {
       name: 'app',
@@ -223,27 +239,13 @@
         firstPerson: FirstPerson,
         secondPerson: SecondPerson,
         thirdPerson: ThirdPerson,
-        fourthPerson: FourthPerson
+        fourthPerson: FourthPerson,
+        GoogleMap
       },
       methods: {
         switchView: function(view){
           this.currentView = view
-        },
-        initMap() {
-      var uluru = {
-        lat: 50.005932, 
-        lng: 36.248027
-      };
-      var map = new google.maps.Map(
-      document.getElementById('map'), {
-        zoom: 5, 
-        center: uluru
-      });
-       var marker = new google.maps.Marker({
-        position: uluru, 
-        map: map
-      });
-    }
+        }
   }
 }
       
@@ -315,6 +317,7 @@
         color: #000;
         cursor: pointer;
         display: flex;
+        padding-top: 20px;
         font-size: 1.5em;
         height: 40px;
         justify-content: center;
@@ -816,13 +819,23 @@
     padding-bottom: 30px;
     margin: 50px auto 50px auto;
   }
+
+  @media screen and (min-width: 1200px){
   .connection{
     background-image: url(/src/assets/background_christmas.png);
-    height: 700px;
+    height: 500px;
     background-size: cover;
     display: flex;
     justify-content: column;
     padding: 125px 10% 125px 10%;
+  }
+}
+.connection{
+    background-image: url(/src/assets/background_christmas.png);
+    min-height: 500px;
+    max-height: 100%;
+    /*justify-content: column;*/
+    padding: 125px auto 125px auto;
   }
 
     .connection_areas, .contactsAndMap{
@@ -830,9 +843,12 @@
       width: 42%;
       opacity: 0.8;
       background-color: #465762;
-      padding-top: 20px;
+      padding-top: 30px;
       padding-right: 30px;
       padding-left: 30px;
+      margin-top: 20px;
+      margin-right: auto;
+      margin-left: auto;
     }
     input[type="text"], .message_area textarea{
       background-color: transparent;
@@ -858,8 +874,8 @@
     } 
 
     .connection button{
-      width: 246px;
-      height: 52px;
+      width: 45%;
+      height: auto;
       font-size: 18pt;
       font-family: 'Montserrat', sans-serif;
       color: #2e6b66;
@@ -869,9 +885,9 @@
       cursor: pointer;
     }
 
-    .contactsAndMap{
+/*    .contactsAndMap{
       margin-left: 2%;
-    }
+    }*/
     .contacts .contacts1{
       padding-top: 40px;
     }
@@ -884,12 +900,29 @@
     .contacts .contacts5{
       padding-top: 40px;
     }
-    #map{
-      width: 445px;
-      height: 225px;
+    .footer{
+      text-align: center;
+      height: 273px;
+      width: 100%;
+      background-color: #262b2e;
+      padding-top: 40px;
+      margin-top: 10px;
     }
-
-
+    .socsety img{
+      margin-right: 10px;
+    }
+    .follow p{
+      font-size: 16pt;
+      font-family: 'Raleway', sans-serif;
+      color: white;
+      text-transform: uppercase;
+    }
+    .copyright p{
+      font-size: 16pt;
+      font-family: 'Raleway', sans-serif;
+      color: #6a6d6e;
+      padding-top: 20px;
+    }
     
     </style>
 
