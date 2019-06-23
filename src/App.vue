@@ -1,6 +1,6 @@
     <template>
       <div id="app">
-        <div class="firstPath">
+        <div class="firstPath" id="scrollFirstPath">
           <div class="appbar">
             <div class="logo"><p>SH<span>O</span>PNO</p></div>
             <nav>
@@ -19,7 +19,11 @@
               </transition>
               <transition name="fade">
                 <ul v-if="show">
-                  <li v-for="item in items">{{ item }}</li>
+                  <li class="item"><a href="#aboutUS"><p>About us</p></a></li>
+                  <li class="item"><a href="#scrollWorks"><p>Our Works</p></a></li>
+                  <li class="item"><a href="#scrollServices"><p>Our Services</p></a></li>
+                  <li class="item"><a href="#scrollTeam"><p>Our Team</p></a></li>
+                  <li class="item"><a href="#scrollConnection"><p>Contacts</p></a></li>
                 </ul>
               </transition>
             </nav>
@@ -30,10 +34,12 @@
             <div class="contactUs">
               <button>CONTACT US</button>
             </div>
+            <div><a href="#scrollFirstPath"><img src="src/assets/arrowToTop.png" class="arroToTop"></a></div>
             <div class="glass"><img src="src/assets/glass.png"></div>
+            
           </div>
         </div>
-          <div class="aboutUS">
+          <div id="aboutUS">
 
             <div class="aboutUS1">
               <div class="nameAboutUs"><p>About Us</p></div>
@@ -70,7 +76,7 @@
 
           </div>
 
-          <div class="ourWorks">
+          <div class="ourWorks" id="scrollWorks">
             <div class="nameWorks"><p>Feature Works</p></div>
             <div class="underNameWorks"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
             <div class="allPictWork">
@@ -83,7 +89,7 @@
             </div>
           </div>
 
-          <div class="ourServices">
+          <div class="ourServices" id="scrollServices">
             <div class="nameWorks"><p>Our Services</p></div>
             <div class="underNameWorks"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
             <div class="picturesOfServices">
@@ -143,7 +149,7 @@
             </div>
           </div>
 
-          <div class="ourTeam ourWorks">
+          <div class="ourTeam ourWorks" id="scrollTeam">
             <div class="nameWorks"><p>Small Team</p></div>
             <div class="underNameWorks"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
             <div class="allPictWork">
@@ -156,7 +162,7 @@
             </div>
           </div>
 
-          <div class="comments ourWorks">
+          <div class="comments ourWorks" id="scrollWorks">
             <div class="nameComments nameWorks"><p>What They says</p></div>
             <div class="nameUnderComments underNameWorks "><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p></div>
             <div class="blockWithSliderAndText">
@@ -172,7 +178,7 @@
           
           <div class="brends"></div>
           
-          <div class="connection">
+          <div class="connection" id="scrollConnection">
             <div class="connection_areas">
               <div class="name_area"><input type="text" placeholder="Name"></div>
               <div class="subject_area"><input type="text"placeholder="Subject"></div>
@@ -223,14 +229,6 @@
       name: 'app',
       data () {
         return {
-          items: [
-            'Home',
-            'About Us',
-            'Our Works',
-            'Our Services',
-            'Our Team',
-            'Contact us'
-          ],
           show: false,
           currentView: 'firstPerson'
         }
@@ -257,6 +255,9 @@
       /*font-family: 'Montserrat', sans-serif;
       font-family: 'Merriweather', serif;
       font-family: 'Raleway', sans-serif;*/
+      html{
+        scroll-behavior: smooth;
+      }
 
       body{
         margin: 0;
@@ -317,7 +318,8 @@
         color: #000;
         cursor: pointer;
         display: flex;
-        padding-top: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
         font-size: 1.5em;
         height: 40px;
         justify-content: center;
@@ -329,6 +331,14 @@
       li:hover{
         background-color: #585555;
         color: #dadede;
+      }
+      a:hover{
+        color: #dadede;
+        text-decoration: none;
+      }
+      a{
+        color: black;
+        text-decoration: none;
       }
       .fade-enter-active, .fade-leave-active{
         transition: opacity .3s ease;
@@ -361,6 +371,7 @@
         align-self: end;
       }
       .glass{
+        margin-top: -250px;
         margin-left: 75%;
         margin-right: 25%;
       }
@@ -409,9 +420,20 @@
         color: #e6e6e6;
       }
 
+      @media screen and (max-width: 1216px){ 
+        div a img{ 
+          display: none;
+        }
+      }
+    div a img{
+        width: 70px;
+        position: fixed;
+        margin-top: -10px;
+        margin-left: 45%;
+        margin-right: 35%;
+      }
 
-
-      .aboutUS{
+      #aboutUS{
         display: flex;
         flex-direction: column;
         justify-content: space-around;
